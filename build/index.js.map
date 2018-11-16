@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "file": "index.js",
+  "sourceRoot": "../src/",
+  "sources": [
+    "index.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;EAAA;AAAA,MAAA,IAAA,EAAA,EAAA,EAAA,MAAA,EAAA,QAAA,EAAA;;EAEA,IAAA,GAAO,OAAA,CAAQ,MAAR;;EACP,QAAA,GAAW,OAAA,CAAQ,WAAR;;EAEX,MAAA,GAAS,IAAI,CAAC,YAAL,CAAkB,QAAA,CAAC,GAAD,EAAM,GAAN,CAAA;WACzB,OAAO,CAAC,GAAR,CAAY,GAAG,CAAC,GAAhB;EADyB,CAAlB,CAET,CAAC,MAFQ,CAED,KAFC;;EAGT,OAAA,GAAU;;EACV,EAAA,GAAK,QAAQ,CAAC,MAAT,CAAgB,MAAhB;;EACL,EAAE,CAAC,EAAH,CAAM,YAAN,EAAoB,QAAA,CAAC,MAAD,CAAA;IAClB,OAAO,CAAC,GAAR,CAAY,kBAAZ;IACA,OAAO,CAAC,IAAR,CAAa,MAAb;WACA,MAAM,CAAC,EAAP,CAAU,YAAV,EAAwB,QAAA,CAAA,CAAA;aACtB,OAAO,CAAC,MAAR,CAAe,OAAO,CAAC,OAAR,CAAgB,MAAhB,CAAf,EAAwC,CAAxC;IADsB,CAAxB;EAHkB,CAApB;AAVA",
+  "sourcesContent": [
+    "'use strict'\r\n\r\nhttp = require 'http'\r\nsocketio = require 'socket.io'\r\n\r\nserver = http.createServer (req, res) ->\r\n  console.log req.url\r\n.listen 20007\r\nsockets = []\r\nio = socketio.listen server\r\nio.on 'connection', (socket) ->\r\n  console.log 'got a connection'\r\n  sockets.push socket\r\n  socket.on 'disconnect', ->\r\n    sockets.splice sockets.indexOf(socket), 1\r\n"
+  ]
+}
