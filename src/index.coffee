@@ -24,7 +24,7 @@ io.on 'connection', (socket) ->
     await streamWrite ssh.stdin, data + '\n'
 
 start = ->
-  args = "-Xmx2048M -Xms2048M -jar Minecraft/server.jar nogui".split(/ /g)
+  args = "-Xmx2048M -Xms2048M -jar /Users/kieronwright/Minecraft/server.jar nogui".split(/ /g)
   ssh = spawn 'java', args,
     stdio: [
       'pipe'
