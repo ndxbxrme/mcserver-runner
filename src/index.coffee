@@ -24,15 +24,14 @@ io.on 'connection', (socket) ->
     await streamWrite ssh.stdin, data + '\n'
 
 start = ->
-  args = "-Xmx2048M -Xms2048M -jar /Users/kieronwright/Minecraft/server.jar nogui".split(/ /g)
-  ssh = spawn 'bash', null,
+  args = "-Xmx2048M -Xms2048M -jar server.jar nogui".split(/ /g)
+  ssh = spawn 'java', args,
+    cwd: '/Users/kieronwright/Minecraft'
     stdio: [
       'pipe'
       'pipe'
       process.stderr
     ]
-  await streamWrite ssh.stdin, "cd /Users/kieronwright/Minecraft\n"
-  await streamWrite ssh.stdin, "java -Xmx2048M -Xms2048M -jar server.jar nogui\n"
   ssh.stdout.on 'data', (data) ->
     udata = data.toString('utf8')
     if not mcserverRunning
