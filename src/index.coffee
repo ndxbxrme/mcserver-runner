@@ -34,6 +34,6 @@ start = ->
   ssh.stdout.on 'data', (data) ->
     udata = data.toString('utf8')
     if not mcserverRunning
-      if udata
+      mcserverRunning = /^Done/.test udata
     console.log udata
     emit 'data', udata
