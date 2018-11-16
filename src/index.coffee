@@ -37,3 +37,4 @@ start = ->
       mcserverRunning = /^Done/.test udata
     console.log udata
     emit 'data', udata
+start()
